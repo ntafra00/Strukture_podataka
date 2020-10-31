@@ -1,0 +1,7 @@
+ante           	antic          	1980 
+borna          	bornic         	1990 
+ivica          	ivic           	2000 
+jure           	juric          	1995 
+mile           	milic          	1985 
+pero           	peric          	2000 
+zvone          	zvonic         	1990 
