@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct node *position;
 
@@ -22,8 +23,6 @@ int main()
     readFromFile("postfix.txt", &head);
 
     printList(head);
-
-    free(head);
 
     return 0;
 }
@@ -50,15 +49,7 @@ int Push(position *head_ref, int value)
 
 int printList(position head)
 {
-    position temp = head;
-
-    while (temp->next != NULL)
-    {
-        temp = temp->next;
-        printf("%d\n", temp->number);
-    }
-
-    free(temp);
+    printf("%d", head->number);
 
     return 0;
 }
@@ -69,7 +60,7 @@ int readFromFile(char fileName[], position *head_ref)
     int num;
     int num1, num2;
     int result;
-    char operation;
+    char operation[10];
 
     fptr = fopen(fileName, "r");
 
@@ -82,9 +73,9 @@ int readFromFile(char fileName[], position *head_ref)
     while (!feof(fptr))
     {
 
-        operation = fgetc(fptr);
+        fscanf(fptr, "%s ", operation);
 
-        if (operation == '+')
+        if (strcmp(operation, "+") == 0)
         {
             num1 = Pop(head_ref);
             num2 = Pop(head_ref);
@@ -93,7 +84,7 @@ int readFromFile(char fileName[], position *head_ref)
 
             Push(head_ref, result);
         }
-        else if (operation == '-')
+        else if (strcmp(operation, "-") == 0)
         {
             num1 = Pop(head_ref);
             num2 = Pop(head_ref);
@@ -102,7 +93,7 @@ int readFromFile(char fileName[], position *head_ref)
 
             Push(head_ref, result);
         }
-        else if (operation == '*')
+        else if (strcmp(operation, "*") == 0)
         {
             num1 = Pop(head_ref);
             num2 = Pop(head_ref);
@@ -111,7 +102,7 @@ int readFromFile(char fileName[], position *head_ref)
 
             Push(head_ref, result);
         }
-        else if (operation == '/')
+        else if (strcmp(operation, "/") == 0)
         {
             num1 = Pop(head_ref);
             num2 = Pop(head_ref);
@@ -122,7 +113,7 @@ int readFromFile(char fileName[], position *head_ref)
         }
         else
         {
-            num = operation - '0';
+            num = atoi(operation);
 
             Push(head_ref, num);
         }
