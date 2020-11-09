@@ -123,6 +123,40 @@ int addPoly(position poly1, position poly2)
         }
     }
 
+    if (prvi == NULL)
+    {
+        while (drugi != NULL)
+        {
+            if (List(poly3))
+            {
+                addOnTheBeggining(&poly3, drugi->koef, drugi->eksponent);
+                drugi = drugi->next;
+            }
+            else
+            {
+                add(poly3, drugi->koef, drugi->eksponent);
+                drugi = drugi->next;
+            }
+        }
+    }
+
+    if (drugi == NULL)
+    {
+        while (prvi != NULL)
+        {
+            if (List(poly3))
+            {
+                addOnTheBeggining(&poly3, prvi->koef, prvi->eksponent);
+                prvi = prvi->next;
+            }
+            else
+            {
+                add(poly3, prvi->koef, prvi->eksponent);
+                prvi = prvi->next;
+            }
+        }
+    }
+
     printf("Zbrojeni polinom:\n");
 
     printList(poly3);
