@@ -16,7 +16,6 @@ int printList(position);                // ispis liste
 int unija(position, position);          // funkcija koja trazi uniju dviju lista
 int presjek(position, position);        // funkcija koja trazi presjek dviju lista
 position deleteEntireList(position);    // funckija koja kompletno brise listu
-int found(position, int);               // funckija koja pronalazi element u listi
 int insertElements(position *);         // funkcija za unos elemenata u listu
 
 int main()
@@ -64,7 +63,7 @@ int insertElements(position *head_ref)
             flag = 1;
             break;
         default:
-            printf("Greska pri unosu!");
+            printf("\nGreska pri unosu! \n");
             break;
         }
     }
@@ -131,22 +130,6 @@ int printList(position head_ref)
     }
 }
 
-int found(position head_ref, int number)
-{
-    position ptr = head_ref;
-
-    while (ptr != NULL)
-    {
-        if (ptr->value == number)
-        {
-            return 1;
-        }
-        ptr = ptr->next;
-    }
-
-    return 0;
-}
-
 position deleteEntireList(position head_ref)
 {
     position temp = head_ref;
@@ -158,32 +141,52 @@ position deleteEntireList(position head_ref)
         head_ref = temp;
     }
 
-    free(temp);
-
     return head_ref;
 }
 
 int unija(position list1, position list2)
 {
     position unija = NULL;
-    int istina;
+    position ptr1 = list1;
+    position ptr2 = list2;
 
-    while (list1 != NULL)
+    while ((ptr1 != NULL) && (ptr2 != NULL))
     {
-        add(&unija, list1->value);
-        list1 = list1->next;
-    }
-
-    while (list2 != NULL)
-    {
-        istina = found(unija, list2->value);
-
-        if (istina != 1)
+        if (ptr1->value < ptr2->value)
         {
-            add(&unija, list2->value);
+            add(&unija, ptr1->value);
+            ptr1 = ptr1->next;
+        }
+        else if (ptr2->value < ptr1->value)
+        {
+            add(&unija, ptr2->value);
+            ptr2 = ptr2->next;
         }
 
-        list2 = list2->next;
+        else
+        {
+            add(&unija, ptr1->value);
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+        }
+    }
+
+    if (ptr1 == NULL)
+    {
+        while (ptr2 != NULL)
+        {
+            add(&unija, ptr2->value);
+            ptr2 = ptr2->next;
+        }
+    }
+
+    if (ptr2 == NULL)
+    {
+        while (ptr1 != NULL)
+        {
+            add(&unija, ptr1->value);
+            ptr1 = ptr1->next;
+        }
     }
 
     printf("\nUNIJA: ");
@@ -197,20 +200,26 @@ int unija(position list1, position list2)
 int presjek(position list1, position list2)
 {
     position presjek = NULL;
-    position ptr = list2;
-    int istina;
+    position ptr1 = list1;
+    position ptr2 = list2;
 
-    while (list1 != NULL)
+    while (ptr1 != NULL && ptr2 != NULL)
     {
-
-        istina = found(ptr, list1->value);
-
-        if (istina == 1)
+        if (ptr1->value < ptr2->value)
         {
-            add(&presjek, list1->value);
+            ptr1 = ptr1->next;
         }
+        else if (ptr1->value == ptr2->value)
+        {
+            add(&presjek, ptr1->value);
 
-        list1 = list1->next;
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+        }
+        else
+        {
+            ptr2 = ptr2->next;
+        }
     }
 
     printf("\nPRESJEK: ");
