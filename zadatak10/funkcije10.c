@@ -187,3 +187,17 @@ int deleteHead(node_ptr head)
 
     return 0;
 }
+
+int writeInFile(char *nameOfFile, tree_ptr root)
+{
+    FILE *fptr;
+    fptr = fopen(nameOfFile, "w");
+
+    if (fptr == NULL)
+    {
+        printf("File not opened!\n");
+        return -1;
+    }
+
+    return 0;
+}

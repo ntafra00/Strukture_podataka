@@ -4,10 +4,11 @@
 
 int main()
 {
-    char nameOfFile[20];
+    char ulaz[20];
+    char izlaz[20];
 
     printf("Unesite ime file-a: ");
-    scanf(" %s", nameOfFile);
+    scanf(" %s", ulaz);
 
     // head stoga
     node_ptr head;
@@ -17,9 +18,12 @@ int main()
     //root stabla
     tree_ptr root = NULL;
 
-    root = readAndStore(nameOfFile, head, root);
+    root = readAndStore(ulaz, head, root);
 
-    inorder(root);
+    printf("Unesite ime file-a u koji zelie upisati infix izraz: ");
+    scanf(" %s", izlaz);
+
+    writeInFile(izlaz, root);
 
     root = deleteTree(root);
     deleteHead(head);
