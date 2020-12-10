@@ -28,4 +28,4 @@ int pushTree(node_ptr, tree_ptr);                  // funkcija koja salje node s
 int inorder(tree_ptr);                             // inorder ispis stabla
 tree_ptr deleteTree(tree_ptr);                     // funkcija koja brise stablo
 int deleteHead(node_ptr);                          // funkcija koja brise vezanu listu
-int writeInFile(char *, tree_ptr);                 // funkcija koja upisuje sadrzaj u datoteku
+int writeInFile(tree_ptr);                         // funkcija koja ispisuje sadrzaj stabla u proizvoljan file

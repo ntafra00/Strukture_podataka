@@ -132,15 +132,14 @@ int printLinkedList(node_ptr head_ref)
     return 0;
 }
 
-int inorder(tree_ptr root)
+int inorder(FILE *fptr, tree_ptr root)
 {
-
     if (root != NULL)
     {
 
-        inorder(root->left);
-        printf("%s ", root->content);
-        inorder(root->right);
+        inorder(fptr, root->left);
+        fprintf(fptr, "%s ", root->content);
+        inorder(fptr, root->right);
     }
 
     return 0;
@@ -188,16 +187,25 @@ int deleteHead(node_ptr head)
     return 0;
 }
 
-int writeInFile(char *nameOfFile, tree_ptr root)
+int writeInFile(tree_ptr root)
 {
-    FILE *fptr;
+    char nameOfFile[20];
+
+    printf("Unesite ime datoteke u koju zelite ispisati sadrzaj stabla: ");
+    scanf(" %s", nameOfFile);
+
+    FILE *fptr = NULL;
+
     fptr = fopen(nameOfFile, "w");
 
     if (fptr == NULL)
     {
-        printf("File not opened!\n");
         return -1;
     }
+
+    inorder(fptr, root);
+
+    fclose(fptr);
 
     return 0;
 }

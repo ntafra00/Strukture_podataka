@@ -5,7 +5,6 @@
 int main()
 {
     char ulaz[20];
-    char izlaz[20];
 
     printf("Unesite ime file-a: ");
     scanf(" %s", ulaz);
@@ -20,10 +19,7 @@ int main()
 
     root = readAndStore(ulaz, head, root);
 
-    printf("Unesite ime file-a u koji zelie upisati infix izraz: ");
-    scanf(" %s", izlaz);
-
-    writeInFile(izlaz, root);
+    writeInFile(root);
 
     root = deleteTree(root);
     deleteHead(head);
