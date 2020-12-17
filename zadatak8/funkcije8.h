@@ -27,3 +27,4 @@ int directorySimulation(position, tree_ptr); // funkcija kojom simuliramo rad di
 int printStack(position);                    // funkcija koja ispisuje sadrzaj stoga
 int contentOfDirectory(tree_ptr);            // funkcija koja ispisuje kompletan sadrzaj trenutnog direktorija
 tree_ptr isFound(tree_ptr, char *);          // funkcija koja pronalazi postoji li trazeni direktorij
+int freeStack(position);                     // funkcija koja oslobada memoriju stoga

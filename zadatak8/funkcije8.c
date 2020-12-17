@@ -105,10 +105,11 @@ int printStack(position head_ref)
     while (head_ref != NULL)
     {
         strcat(stringToPrint, head_ref->content->dir);
-        strcat(stringToPrint, "/");
+        strcat(stringToPrint, "\\");
         head_ref = head_ref->next;
     }
 
+    //strcat(stringToPrint, ">");
     printf("%s ", stringToPrint);
 
     return 0;
@@ -224,5 +225,17 @@ tree_ptr isFound(tree_ptr root, char *key)
     {
 
         return NULL;
+    }
+}
+
+int freeStack(position head_ref)
+{
+    position temp = head_ref;
+
+    while (head_ref != NULL)
+    {
+        temp = head_ref;
+        head_ref = head_ref->next;
+        free(temp);
     }
 }
