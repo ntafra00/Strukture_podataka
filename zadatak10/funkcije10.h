@@ -25,7 +25,7 @@ node_ptr createNode(char *);                       // funkcija koja kreira node 
 tree_ptr createTree(char *);                       // funkcija koja kreira stablo
 tree_ptr updateTree(tree_ptr, tree_ptr, tree_ptr); // funkcija koja azurira sadrzaj stabla
 int pushTree(node_ptr, tree_ptr);                  // funkcija koja salje node sa stablom na stog
-int inorder(tree_ptr);                             // inorder ispis stabla
+int inorder(FILE *, tree_ptr);                     // inorder ispis stabla
 tree_ptr deleteTree(tree_ptr);                     // funkcija koja brise stablo
 int deleteHead(node_ptr);                          // funkcija koja brise vezanu listu
 int writeInFile(tree_ptr);                         // funkcija koja ispisuje sadrzaj stabla u proizvoljan file
