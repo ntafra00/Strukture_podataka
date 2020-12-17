@@ -109,7 +109,7 @@ int printStack(position head_ref)
         head_ref = head_ref->next;
     }
 
-    //strcat(stringToPrint, ">");
+    strcat(stringToPrint, ">");
     printf("%s ", stringToPrint);
 
     return 0;
